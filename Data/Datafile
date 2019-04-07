@@ -1,0 +1,3 @@
+local datafile = require("datafile")
+
+local my_template = datafile.open("myapp/my_template.txt", "r")
