@@ -1,0 +1,41 @@
+---
+title: "CLusters"
+author: "O Steve Goa"
+date: "4/11/2019"
+output: html_document
+---
+Creating the data frame
+
+```{r}
+df = USArrests
+df = na.omit(df)
+head (df)
+```
+
+This project requires cluster
+```{r}
+library(cluster)
+```
+
+Agglomerative coefficient:
+```{r}
+agnes (df)
+```
+
+
+The dist function
+```{r}
+dist
+```
+
+The hclust function
+```{r}
+hclust
+```
+
+
+Cluster with income.csv
+```{r}
+read.csv("C:/rpractice/income.csv")
+```
+

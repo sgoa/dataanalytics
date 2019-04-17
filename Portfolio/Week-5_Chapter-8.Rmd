@@ -1,0 +1,80 @@
+---
+title: "Pirates and Superheroes"
+author: "O Steve Goa"
+date: "4/11/2019"
+output: html_document
+---
+
+```{r}
+library(gdata)
+
+```
+```{r}
+library(ggplot2)
+```
+
+
+Create a data frame
+
+```{r}
+ data <- data.frame(
+name = c("Astrid", "Lea", "Sarina", "Remon", "Lea","Babice", "Jonas", "Wendy", "Niveditha", "Gioia"), 
+sex = c("female", "male", "male", "male", "female", "male", "female", "female", "male", "female"),
+age = c(30, 25, 25, 29, 22, 22, 35, 19, 32, 21),
+superhero = c("Batman", "Superman", "Batman", "Spiderman", "Batman",
+"Antman", "Batman", "Superman", "Maggott", "Superman"),
+tattoos = c(11, 15, 12, 5, 65, 3, 9, 13, 900, 0))
+```
+
+
+Finding the median age
+```{r}
+median(data$age)
+```
+
+
+The female mean age
+```{r}
+data.female <- subset(x = data,
+subset = sex == "female"
+)
+```
+```{r}
+mean(data.female$age)
+```
+
+
+
+The median age of the 10 pirates
+```{r}
+age = c(11,15,12,5,65,3,9,13,900,0)
+median(age)
+```
+
+The mean age of female and male pirates
+```{r}
+aggregate(formula = age ~ sex, data = data, FUN = mean)
+```
+
+What was the most number of tattoos owned by a male pirate
+```{r}
+max(data$tattoos[data$sex == "male"])
+```
+
+The percent of pirates under the age of 32 were female
+```{r}
+mean(data$sex[data$age < 32] == "female")
+```
+
+Adding a new column
+```{r}
+data$tattoos.per.year <- data$tattoos / data$age
+```
+
+
+ The pirate with the most number of tattoos / year 
+ 
+```{r}
+data$name[data$tattoos.per.year == max(data$tattoos.per.year)]
+```
+

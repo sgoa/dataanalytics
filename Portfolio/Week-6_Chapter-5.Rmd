@@ -1,0 +1,49 @@
+---
+title: "Data transformation"
+author: "O Steve Goa"
+date: "4/11/2019"
+output: html_document
+---
+
+
+Loading packages
+```{r}
+library(nycflights13)
+```
+```{r}
+library(dplyr)
+```
+```{r}
+library(tidyverse)
+```
+
+Listing the NYC flights for the year 2013
+```{r}
+nycflights13::flights
+```
+
+Filter the Flights of the month of December, Day = 30th
+```{r}
+filter(flights, month==12, day==30)
+```
+
+Grouping flights by year, month and day
+```{r}
+by_day <- group_by(flights, year, month, day)
+```
+
+```{r}
+summarise(by_day, delay = mean(dep_delay, na.rm = TRUE))
+```
+
+Finding Delay, and summarise
+```{r}
+summarise(flights, delay = mean(dep_delay, na.rm = TRUE)) 
+```
+
+
+
+
+
+
+

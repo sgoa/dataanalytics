@@ -1,0 +1,148 @@
+---
+title: "Data visualisation"
+author: "O Steve Goa"
+date: "4/11/2019"
+output: html_document
+---
+
+```{r}
+library(ggplot2)
+```
+```{r}
+library(tidyverse)
+```
+
+Using mpg as a data frame
+```{r}
+head(mpg)
+```
+
+```{r}
+data <- data.frame(mpg)
+```
+
+
+Shape and color of a dotted graph
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy), color = "blue")
+```
+
+Graph and geometric objects
+```{r}
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy, color = drv)) + 
+  geom_point() + 
+  geom_smooth(se = FALSE)
+```
+
+Show legend code
+
+```{r}
+show.legend = FALSE
+```
+
+Recreating the R code necessary to generate the graphs as seen in the excercises from chapter 3
+Requires gridExtra
+
+```{r}
+library(gridExtra)
+```
+
+```{r}
+plot1 <- qplot(1)
+plot2 <- qplot(1)
+grid.arrange(plot1, plot2, ncol=2)
+```
+
+
+
+
+```{r}
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_point() + 
+  geom_smooth()
+```
+
+```{r}
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_point(mapping = aes(color = class)) + 
+  geom_smooth()
+  
+```
+
+
+Requires Library Cowplot
+
+```{r}
+library(cowplot)
+```
+
+```{r}
+data1 <- ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_point(mapping = aes(color = class)) + 
+  geom_smooth() + theme_bw()
+
+data2 <- ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_point(mapping = aes(color = class)) + 
+  geom_smooth() + theme_bw() +
+  theme(legend.position = c(0.8, 0.8))
+
+plot_grid(data1, data2, labels = "AUTO")
+```
+
+
+
+Jitter amount: The geom_count()
+```{r}
+ggplot(data = mpg, mapping = aes(x = cty, y = hwy)) + 
+  geom_point(mapping = aes(x = displ, y = hwy), position = "jitter")
+```
+
+Requires the map library
+```{r}
+library(maps)
+```
+
+coord_quickmap() and coord_map() are identical.
+However coord_map() requires a package called "mapproj:
+
+Example of coord_quickmap():
+```{r}
+nz <- map_data("nz")
+
+ggplot(nz, aes(long, lat, group = group)) +
+  geom_polygon(fill = "gray", colour = "red")
+
+ggplot(nz, aes(long, lat, group = group)) +
+  geom_polygon(fill = "gray", colour = "blue") +
+  coord_map()
+```
+
+```{r}
+library(mapproj)
+```
+
+libr
+example of coord_map() 
+```{r}
+nz <- map_data("nz")
+
+ggplot(nz, aes(long, lat, group = group)) +
+  geom_polygon(fill = "gray", colour = "red")
+
+ggplot(nz, aes(long, lat, group = group)) +
+  geom_polygon(fill = "gray", colour = "blue") +
+  coord_map()
+```
+
+
+
+
+Abline is useful for linear regression. It races a straight line through the plot.
+```{r}
+ggplot(data = mpg, mapping = aes(x = cty, y = hwy)) +
+  geom_point() + 
+  geom_abline() +
+  coord_fixed()
+```
+
