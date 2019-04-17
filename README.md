@@ -1,4 +1,4 @@
-# Data Analytics Code Porfolio
+# Data Analytics Final Report
 
 This project is an analysis of census data comparisons by life expectancy, population numbers, income of the different countries in the world since the year 1800.
 
