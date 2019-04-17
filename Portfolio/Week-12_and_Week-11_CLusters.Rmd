@@ -6,36 +6,36 @@ output: html_document
 ---
 Creating the data frame
 
-```{r}
+```{r, echo=TRUE}
 df = USArrests
 df = na.omit(df)
 head (df)
 ```
 
 This project requires cluster
-```{r}
+```{r, echo=FALSE}
 library(cluster)
 ```
 
 Agglomerative coefficient:
-```{r}
+```{r, echo=TRUE}
 agnes (df)
 ```
 
 
 The dist function
-```{r}
+```{r, echo=FALSE}
 dist
 ```
 
 The hclust function
-```{r}
+```{r, echo=FALSE}
 hclust
 ```
 
 
 Cluster with income.csv
-```{r}
+```{r, echo=FALSE}
 read.csv("C:/rpractice/income.csv")
 ```
 

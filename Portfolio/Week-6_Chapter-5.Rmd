@@ -7,37 +7,37 @@ output: html_document
 
 
 Loading packages
-```{r}
+```{r, echo=TRUE}
 library(nycflights13)
 ```
-```{r}
+```{r, echo=TRUE}
 library(dplyr)
 ```
-```{r}
+```{r, echo=TRUE}
 library(tidyverse)
 ```
 
 Listing the NYC flights for the year 2013
-```{r}
+```{r, echo=TRUE}
 nycflights13::flights
 ```
 
 Filter the Flights of the month of December, Day = 30th
-```{r}
+```{r, echo=TRUE}
 filter(flights, month==12, day==30)
 ```
 
 Grouping flights by year, month and day
-```{r}
+```{r, echo=TRUE}
 by_day <- group_by(flights, year, month, day)
 ```
 
-```{r}
+```{r, echo=TRUE}
 summarise(by_day, delay = mean(dep_delay, na.rm = TRUE))
 ```
 
 Finding Delay, and summarise
-```{r}
+```{r, echo=TRUE}
 summarise(flights, delay = mean(dep_delay, na.rm = TRUE)) 
 ```
 

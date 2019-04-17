@@ -13,11 +13,11 @@ library(tidyverse)
 ```
 
 Using mpg as a data frame
-```{r}
+```{r, echo=TRUE}
 head(mpg)
 ```
 
-```{r}
+```{r, echo=TRUE}
 data <- data.frame(mpg)
 ```
 
@@ -29,7 +29,7 @@ ggplot(data = mpg) +
 ```
 
 Graph and geometric objects
-```{r}
+```{r, echo=TRUE}
 ggplot(data = mpg, mapping = aes(x = displ, y = hwy, color = drv)) + 
   geom_point() + 
   geom_smooth(se = FALSE)
@@ -37,18 +37,18 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy, color = drv)) +
 
 Show legend code
 
-```{r}
+```{r, echo=TRUE}
 show.legend = FALSE
 ```
 
 Recreating the R code necessary to generate the graphs as seen in the excercises from chapter 3
 Requires gridExtra
 
-```{r}
+```{r, echo=TRUE}
 library(gridExtra)
 ```
 
-```{r}
+```{r, echo=TRUE}
 plot1 <- qplot(1)
 plot2 <- qplot(1)
 grid.arrange(plot1, plot2, ncol=2)
@@ -57,13 +57,13 @@ grid.arrange(plot1, plot2, ncol=2)
 
 
 
-```{r}
+```{r, echo=TRUE}
 ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
   geom_point() + 
   geom_smooth()
 ```
 
-```{r}
+```{r, echo=TRUE}
 ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
   geom_point(mapping = aes(color = class)) + 
   geom_smooth()
@@ -77,7 +77,7 @@ Requires Library Cowplot
 library(cowplot)
 ```
 
-```{r}
+```{r, echo=TRUE}
 data1 <- ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
   geom_point(mapping = aes(color = class)) + 
   geom_smooth() + theme_bw()
@@ -93,7 +93,7 @@ plot_grid(data1, data2, labels = "AUTO")
 
 
 Jitter amount: The geom_count()
-```{r}
+```{r, echo=TRUE}
 ggplot(data = mpg, mapping = aes(x = cty, y = hwy)) + 
   geom_point(mapping = aes(x = displ, y = hwy), position = "jitter")
 ```
@@ -107,7 +107,7 @@ coord_quickmap() and coord_map() are identical.
 However coord_map() requires a package called "mapproj:
 
 Example of coord_quickmap():
-```{r}
+```{r, echo=TRUE}
 nz <- map_data("nz")
 
 ggplot(nz, aes(long, lat, group = group)) +
@@ -124,7 +124,7 @@ library(mapproj)
 
 libr
 example of coord_map() 
-```{r}
+```{r, echo=TRUE}
 nz <- map_data("nz")
 
 ggplot(nz, aes(long, lat, group = group)) +
@@ -139,7 +139,7 @@ ggplot(nz, aes(long, lat, group = group)) +
 
 
 Abline is useful for linear regression. It races a straight line through the plot.
-```{r}
+```{r, echo=TRUE}
 ggplot(data = mpg, mapping = aes(x = cty, y = hwy)) +
   geom_point() + 
   geom_abline() +
